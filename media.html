@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-size: 20px;
+            background-color: lawngreen;
+        }
+        .container{
+            height:100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        #size{
+            position: absolute;
+            top:60%;
+            left:50%;
+            transform: translateX(-50%);
+            color:white;
+        }
+        @media screen and (max-width:800px) and (min-width:500px) {
+            body{
+                background-color: red;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="text">
+            Hello
+
+        </div>
+
+        <div id="size">
+
+        </div>
+
+    </div>
+</body>
+</html>

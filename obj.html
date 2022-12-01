@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// ** OBJECT.ASSIGN
+
+    //     let a={
+    //         name:"male",
+    //         id:01
+    //     }
+    //     let b={
+    //        gender:"male"
+    //     }
+    //   let c={
+    //     designation:"mern"
+    //   }
+    //     let newObject=Object.assign({},a,b,c)
+    //     console.log(newObject)
+
+
+// ** OBJECT.KEYS
+           
+            // let a={
+            // name:"male",
+            // id:01
+            // }
+            // let mani=Object.keys(a);
+            // console.log(mani)
+
+
+// ** OBJECT.VALUES 
+ 
+            // let a={
+            // name:"male",
+            // id:01
+            // }
+            // let mani=Object.values(a)
+            // console.log(mani)
+
+
+
+
+// ** OBJECT.ENTRIES
+
+            // let a={
+            // name:"male",
+            // id:01
+            // }
+            // let mani=Object.entries(a);
+            // console.log(mani)
+
+
+            
+// ** OBJECT.SEAL
+
+               let student={
+                name:"mani",
+                id:1,
+                
+               }
+              let mani= Object.seal(student)
+               console.log(mani)
+               
+               student.address="banglore";
+               console.log(student)                     //adding is not poosible
+
+               student.name="banglore";
+               console.log(student)                      // updating is possible     but in object.freeze updating is not possible
+                
+               student.name="mani"
+               console.log(student)                       // reading is possible
+
+               delete student.name
+               console.log(student)                       // deleting is not possible
+
+               student.name="mani"
+               console.log(student) 
+
+    </script>
+</body>
+</html>

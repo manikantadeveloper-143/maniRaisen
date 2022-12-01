@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // /// LENGTH ///
+        // let arr = [1, 2, 3, 4, 5]
+        // console.log(arr.length)   //5 = 12345
+        // arr.length = 2
+        // console.log(arr) //2= 1,2
+// ** 
+        /// ARRAY.ISARRAY()- it is a static method of javascript array objects
+        //                -  it returns true if object is  an array
+        //    let arr=[1,2,3,4,5]
+        //    console.log(Array.isArray(arr))
+
+        //    let arr="hello"
+        //    console.log(Array.isArray(arr))
+
+// **
+        /// PUSH /// == it is used to add element at LAST , we can add n number of elemnets as parameter,
+        //  let arr=[1,2,3,4] (it will affect original array)
+        //  console.log(arr)
+        //     arr.push(6)
+        //     console.log(arr)
+        //     arr.push(6,9,11)
+        //     console.log(arr)
+
+// **
+        // POP = it is used to delete elements at LAST , no parameters
+        // let arr = [1, 2, 3, 4]  (it will affect original array)
+        // console.log(arr)
+        // arr.pop()
+        // console.log(arr)
+
+// **    
+        // UNSHIFT = it is used to add element at FIRST , we can add n number of elemnets as parameter,
+        //    let arr= [1,2,3,4] (it will affect original array)
+        //    console.log(arr)
+        //    arr.unshift(10,11)
+        //    console.log(arr)
+// **  
+        // SHIFT = it is used to delete elements at FIRST, no parameters
+        // let arr = [1, 2, 3, 4](it will affect original array)
+        // console.log(arr)
+        // arr.shift()
+        // console.log(arr)
+
+// ** 
+        //INDEXOF= it executes from left to right, it returns first index  element in an array ,it returns -1 if specified element was not found
+        //  it take 2 parameters == a-searchElement, b-start(searching will start from that particular index point)optional
+        //    let arr=[10,20,30,40,50]
+        //    console.log(arr)
+        //    console.log(arr.indexOf(8))
+        //    console.log(arr.indexOf(40))
+
+// ** 
+        /// LASTINDEXOF =it returns last index element in an array, returns -1 if specific element was not found, searching from right to left
+        // let arr = [1, 2, 4, 6, 8, 6, 4, 2, 1]
+        // console.log(arr)
+        // console.log(arr.lastIndexOf(1))
+        // console.log(arr.indexOf(1))
+
+// **
+        // INCLUDES = it returns TRUE if array contains specific element  ,  returns FALSE if specific element was not found 
+        //    let arr=[10,20,30,40,50]
+        //    console.log(arr)
+        //    console.log(arr.includes(40))
+        //    console.log(arr.includes(60))
+
+// **
+        // CONCAT = it is used to concatinate two or more arrays and it returns a new array
+        //   let a=[1,2,3]
+        //   let b=[4,5,6]
+        //   let c=[7,8,9]
+        //   console.log(a.concat(b,c))      
+
+// **
+        //SORT = it is used to sort array elements in ASCENDING / DESCENDING / ALPHABETICAL ORDER
+        //    let array=[30,40,50,10,20,60]
+        //    console.log(array.sort())
+
+        //   let arr=[100,200,3000,20,40,500,10]
+        //   console.log(arr.sort())
+        //        arr.sort((a,b)=>{
+        //         return a-b;
+        //         // return b-a;
+        //        })
+        // console.log(arr)
+
+// **        
+        //JOIN = it is a array method and returns a string
+
+        //    let array=[1,2,3,4,5]
+        //    let arr=["mani"]
+        //    console.log(array.join())
+        //    console.log(arr.join())
+        //    console.log(array.join(''))
+
+// **  
+        //SLICE =  IT IS USED TO FETCH SOME ELEMENTS IN AN ARRAY AND RETURNS NEW ARRAY IT has TWO PARAMETRES a-startIndex , b-endPosition
+        //  let arr=[1,2,3,4,8,9]
+        //  console.log(arr.slice(1))    
+        //  console.log(arr.slice(3,5))    
+
+// **  
+        //SPLICE = IT IS USED TO ADD, INSERT, UPDATE AN ARRAY AND IT WILL EFFECT ORIGINAL ARRAY, WE can pass n number of parametrs but startIndex and number/length/delete of elements
+        //    let arr=[1,2,3,4,8,9,11,12,13,14]
+        //       console.log(arr.splice(1,3)) 
+        //      console.log(arr.splice(2,4,9,8,4,3))
+        //      console.log(arr)
+
+// **
+        // FIND = IT RETURNS THE VALUE OF FIRST ELEMENT WHICH SATISFIES THE CONDITION  AND RETURNS UNDEFINED IF NO ELEMENT WAS SATISFIED
+        // IT DOES NOT EXECUTE FOR AN EMPTY ARRAY AND DOESN'T AFFECT ORIGINAL ARRAY
+        //   let arr=[1,2,3,4,5,6]
+        //  let newFind= arr.find(mani=>{
+        //     return mani>6
+        //  })  
+        //  console.log(newFind)
+
+// **           
+        // FINDLAST= IT RETURNS THE VALUE OF LAST ELEMENT ELEMENT WHICH SATISFIES THE CONDITION  and RETURNS UNDEFINED IF NO ELEMENT WAS SATISFIED
+        //   let arr=[1,2,3,4,5,6]
+        //      let newFind=arr.findLast(mani=>{
+        //         return mani>2
+        //      })  
+        //      console.log(newFind)    
+
+// ** 
+        //FINDINDEX= IT RETURNS INDEX OF FIRST ELEMENT THAT SATISFIES THE CONDITION AND RETURNS -1 IF NO ELEMNT WAS SATISFIED THAT CONDITION 
+
+        //    let arr=[1,2,3,4,5,6,7,8]
+        //    let newFind=arr.findIndex(mani=>{
+        //     return mani>2
+        //    })
+        //    console.log(newFind) 
+
+// ** 
+        //FINDLASTINDEX= IT RETURNS INDEX OF LAST ELEMENT THAT SATISFIES THE CONDITION AND RETURNS -1 IF NO ELEMNT WAS SATISFIED THAT CONDITION  
+
+        // let arr=[1,2,3,4,5,6,7,8]
+        //    let newFind=arr.findLastIndex(mani=>{
+        //     return mani>2
+        //    })
+        //    console.log(newFind) 
+
+// ** 
+        // SOME == it returns true (and STOPS) if the function returns true for one of the array elemnts    
+        // it returns false, if the function returns false  for all of the array elemnts    
+
+        // let arr=[10,12,14,18,20,19]
+        // let newSome=arr.some(mani=>{
+        //     return mani>18  //  true
+        //     return mani >23   //false
+        // })
+        // console.log(newSome)
+
+// ** 
+        // EVERY == IT RETUNS TRUE IF THE FUNCTION RETUNS TRUE  for all of the array elemnts   
+        // it returns false, if the function returns false  FOR ONE ELEMENT
+
+        // let arr=[10,12,14,18,20,19]
+        // let newSome=arr.every(mani=>{
+        // return mani>18    // false
+        //     return mani>9         //true
+        //     // return mani >23  //false
+        // })
+        // console.log(newSome)
+
+// ** 
+        // FOREACH  == THIS METHOD EXECUTES CALL BACKFUNCTION ONCE FOR EVERY ARRAYELEMENT AND DOES NOT RETURN ANYTHING ==>1 PARAMETER
+
+        //    let arr=[10,12,14,18,20,19]
+        //      arr.forEach((item,index,arr)=>{
+        //         console.log(item,index,arr)
+        //      })
+
+
+// ** 
+        // MAP == THIS METHOD EXECUTES CALL BACKFUNCTION ONCE FOR EVERY ARRAYELEMENT AND RETURNS A NEW ARRAY  ==>1 parameter
+
+        //       let arr=[10,12,14,18,20,19]  // it doesnt affect original array
+        //    let newArr=  arr.map((item)=>{
+        //           return  item*3
+        //      })
+        //      console.log(newArr) 
+
+
+
+ //** 
+        //  FILTER == it returns a new array filled with elemnts that pass a test provide by function  ==>1 parameter
+
+        //        let arr=[10,12,14,18,17,19]  // it doesnt affect original array
+        //    let newArr=  arr.filter((item)=>{
+        //           return  item % 2 ==0
+        //      })
+        //      console.log(newArr) 
+
+// ** 
+        // REDUCE == BY USING REDUCE WE CAN FIND ONLY SINGLE VALUE  ==>2 parameter  A-INITIAL VALUE ,B-CBF
+        //REDUCE RIGHT== IT EXECUTES FROM RIGHT TO LEFT WITH SAME OUTPUT OF REDUCE
+        //   let arr=[1,2,3,4,5]
+        //  let result= arr.reduce((initialvalue,item)=>{
+        //         return initialvalue+item
+        //   },0)
+        //   console.log(result)
+
+// ** 
+        // FLAT == IT IS USED TO CONVERT MULTIDIMENSIONAL ARRAY TO SINGLE - DIMENSIONAL ARRAY // Defaultly it will remove one dimensional in array
+        //flatmap==it is identical to map and followed by call to flat of depth
+           let arr=[1,2,3, [4,5]] 
+
+           console.log(arr.flat())
+
+        //    let array=[1,2,[[[3,4,5]]]]
+       let array=[1,2,[3,4],[[[5,6]]]]
+           
+           console.log(array.flat(1))
+// ** 
+        // FILL == IT IS USED TO FILL ELEMENTS IN EXISTING ARRAY AND AFFECTS ORIGINAL ARRAY
+        // let arr = [1, 2, 3, 4, 5, 6]
+        // //   console.log(arr.fill(6)) // fill(value) == output ==6,6,6,6,6,6
+        // //   console.log(arr.fill(3,2)) //                     output ==1,2,3,3,3,3
+        // console.log(arr.fill(3, 2, 4))              // value,startindex,endposition
+
+    </script>
+</body>
+
+</html>

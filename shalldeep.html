@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+// DEEP == DEEP copy of an object is a copy whose properties DO NOT share same reference as those of source object from which the copy was made 
+   // primitive data types number,string,boolean 
+    //  let a=10;
+    //  let b=a;
+    //  b=20;
+    //  console.log(b)  //20
+
+    //  console.log(a)    //10
+    
+
+
+//** 
+    // SHALLOW == shallow copy of an object is a copy whose properties share same reference as those of source object from which the copy was made 
+      // non-primitive datatypes == array,object are shallow copy 
+    //    let arr=[1,2,3,4,5]
+    //     let arr2=arr;
+    //     arr2[0]=100
+    //     console.log(arr2) //100,2,3,4,5
+    //     console.log(arr)   //100,2,3,4,5
+
+ 
+    /// CONVERTING OF SHALLOW INTO DEEP   BY ARRAY  ////
+        // 1=// let a=[1,2,3,4,5]                      // SPREAD OPERATOR
+        // let b=[...a]
+        // b.push(6)
+        // console.log(b)
+        // console.log(a)
+
+        // 2=
+        // let a=[1,2,3,4,5]                               //SLICE
+        // let b=a.slice(0,a.length)
+        // b.push(100)
+        // console.log(b)
+        // console.log(a)
+
+          // 3=
+           
+        //   let a=[1,2,3,4,5]                        // CONCAT
+        //   let b=[].concat(a)
+        //   b.push(100)
+        //   console.log(b)
+        // console.log(a)
+
+
+// ***********************************************************************************************
+                             /// CONVERTING OF SHALLOW INTO DEEP   BY OBJECTS  /
+                    
+            // let a={
+            //     name:"mani",
+            //     id:01
+            // }                                  // SPREAD OPERATOR
+            // let b={...a}
+            // b.gender="male"
+            // console.log(b)
+            // console.log(a)
+
+
+              let a={
+                name:"mani",
+                id:01
+            }     
+            
+            let b=Object.assign({},a)
+            b.gender="male";
+            console.log(b)
+            console.log(a)
+     </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let student={
+        //     name:"mani",
+        //     id:"01",
+        //     details:function(street){
+        //         console.log(this.name,street)
+        //     }
+        // }
+        // student.details("marathhalli")
+        // let employee={
+        //     name:"Naveen",
+        //     salary:30000,
+        // }
+        // student.details.call(employee,"banglore")
+
+        let student={
+            name:"hari",
+            id:"01",
+            salary:function(a,b){
+                console.log(`${this.name} was getting more salary than ${a} and ${b}`)
+
+            }
+        }
+        let employe={
+            name:"nagesh",
+            id:123,
+        }
+        // student.salary.call(employe,"naveen","sasi");
+        // student.salary.apply(employe,["naveen","sasi"])
+        // let result=student.salary.bind(employe,"naveen","sasi")
+        // result()
+        // student.salary("mani","suvi")
+        // function getsalary(a,b){
+        //     console.log(`a getting ${a} salary more than ${b}`)
+
+        // }
+        // getsalary("mani","hari")
+
+
+        // let num=+prompt("enter a number");
+        // let sum=0;
+        // let temp=num;
+        // while(num>0){
+        //     let rem=num%10;
+        //         sum+=Math.pow(rem,String(temp).length);
+        //         num=Math.trunc(num/10)
+        // }
+        // if(sum==temp){
+        //     console.log("yes")
+        // }
+        // else{
+        //     console.log("no")
+        // }
+
+        // let num=+prompt("enter an number");
+        // let flag=true;
+        // for(let i=2; i<num;i++){
+        //     if(num%i==0)
+        //     flag=false;
+        //     break;
+        // }
+        // if(flag){
+        //     console.log("yes")
+        // }
+        // else{
+        //     console.log("no")
+        // }
+        
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex-Box</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        .item{
+            width:100px;
+            height:100px;
+            margin:10px;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          
+            
+        }
+        .flex-container{
+            /* height: 300px; */
+            display:flex;
+            /* flex-direction: row-reverse; */
+             justify-content:space-between; 
+            align-items: center; 
+
+            background-color: antiquewhite;
+
+           
+
+        }
+    .item:nth-child(1){
+        /* order:3; */
+        /* flex-grow: 1; */
+        /* flex-basis:200px; */
+        align-self:stretch;
+       
+    }
+    .item:nth-child(2){
+        /* order: 1; */
+        /* flex-shrink: 2; */
+        /* margin:10px; */
+        align-self: stretch;
+      
+    }
+    .item:nth-child(3){
+        /* order: 2; */
+        /* flex-grow: 1; */
+        align-self:stretch;
+        
+    }
+
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+       <div class="item">Item 1</div>
+       <div class="item">Item 2</div>
+       <div class="item">Item 3</div>   
+    </div>    
+    
+    
+</body>
+</html>

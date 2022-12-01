@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <header class="py-3 ps-5 bg-dark">
+        <h1 class="text-light h2">Login Form</h1>
+    </header>
+    <form class="form-group" id="userForm" onsubmit="return onSubmit()">
+        <div class="container col-4 p-3 border border-2 my-5 rounded" >
+            <div class="text-center h4">Users Form</div>
+            <div class="my-2">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-control">
+                <p class="text-danger" id="firstNameError"></p>
+            </div>
+            <div class="my-2">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-control">
+                <p class="text-danger" id="lastNameError"></p>
+            </div>
+            <div class="my-2">
+                <label for="phoneNo">Phone No</label>
+                <input type="text" id="phoneNo" name="phoneNo" class="form-control">
+                <p class="text-danger" id="phoneError"></p>
+            </div>
+            <div class="my-2">
+                <label for="eMail">Email Address</label>
+                <input type="text" id="eMail" name="eMail" class="form-control">
+                <p class="text-danger" id="eMailError"></p>
+            </div>
+            <div class="my-2">
+                <label for="pAddress">Parament Address</label>
+                <textarea id="pAddress" name="pAddress" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-dark w-100">Submit</button>
+        </div>
+    </form>
+    <script>
+        let firstName = document.getElementById("firstName");
+        let lastName = document.getElementById("lastName");
+        let phone = document.getElementById("phoneNo");
+        let eMail = document.getElementById("eMail");
+        let address = document.getElementById("pAddress")
+        function onSubmit() {
+            if(validateFirstName(firstName.value,"firstNameError")) {
+                lastName.focus();
+                if(validateFirstName(lastName.value,"lastNameError")) {
+                    phone.focus();
+                    if(validatePhoneNo(phone.value)) {
+                        eMail.focus();
+                        if(validateGmail(eMail.value)) {
+                            let users = localStorage.getItem("user") ? JSON.parse(localStorage.getItem('user')) : [];
+                            let user = {
+                                firstName : firstName.value,
+                                lastName : lastName.value,
+                                phoneNo : phone.value,
+                                eMail : eMail.value,
+                                address : address.value
+                            }
+                            localStorage.setItem('user',JSON.stringify([...users,user]))
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } return false;
+                } else return false;
+            } else {
+                return false;
+            }
+        }
+        function displayError(id,errorMsg) {
+            document.getElementById(id).innerText = errorMsg;
+        }
+        function validateFirstName(name,tagId) {
+            if(! name.match(/^[A-Z]/)) {
+                displayError(tagId,"* Name shoud start with upper case");
+                return false;
+            } else {
+                if(name.length < 3) {
+                    displayError(tagId,"* Name shoud contain more than 3 latters");
+                    return false;
+                } else {
+                    displayError(tagId,"");
+                    return true;
+                }
+            }
+        }
+        function validatePhoneNo(value) {
+            if(! value.match(/^[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/)) {
+                displayError("phoneError","* Invalid Number");
+                return false;
+            } else {
+                displayError("phoneError","");
+                return true;
+            };
+        }
+        function validateGmail(value) {
+            if(! value.match(/@/)) {
+                displayError("eMailError","* Invalid Email");
+                return false;
+            }
+            displayError("eMailError","");
+            return true;
+        }
+        //===================
+
+
+        function getUsersInfo() {
+            let users = JSON.parse(localStorage.getItem("user"));
+            console.log(users);
+        }
+        getUsersInfo();
+
+       
+    </script>
+</body>
+</html>
