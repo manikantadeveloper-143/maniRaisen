@@ -1,0 +1,75 @@
+import "./styles.css";
+import {useEffect, useState} from 'react';
+const API_URL = "https://www.themealdb.com/api/json/v1/1/search.php?f=a";
+export default function App() {
+  const [data,setData] = useState(null);
+  useEffect(() => {
+    fetch(API_URL)
+    .then(res => res.json())
+    .then(info => {
+      const {meals : [item1]} = info
+      setData(item1);
+      console.log(item1);
+    }).catch(err => {
+      console.log(err);
+    })
+   } , [])
+  return (
+    <div className="App">
+     <div className="card">
+       <div className="img-container">
+         <img src={data?.strMealThumb}/>
+       </div>
+       <div>
+         <h2 className="item-name">{data?.strMeal}</h2>
+         <p className="category">{data?.strCategory}</p>
+       </div>
+       <div>
+         <p>{data?.strInstructions.slice(0,150)}</p>
+       </div>
+       <ul className="tag-container">
+         {
+           data?.strTags?.split(",").map(tag => {
+             return <li>{tag}</li>
+           })
+         }
+       </ul>
+     </div>
+    </div>
+  );
+}
+
+
+
+
+styles
+* {
+    padding: 0;
+    margin: 0;
+  }
+  .App {
+    font-family: sans-serif;
+  }
+  
+  .card {
+    width: 300px;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 20px auto;
+  }
+  .img-container {
+    width: inherit;
+    height: 30%;
+  }
+  .img-container > img {
+    width: inherit;
+    height: 100%;
+  }
+  .tag-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .tag-container>p {
+    text-decoration: ;
+  }

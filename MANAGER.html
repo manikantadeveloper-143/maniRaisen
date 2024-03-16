@@ -1,0 +1,35 @@
+import "./styles.css";
+import {useState} from 'react';
+export default function App() {
+  const [isTable,SetIsTable] = useState(false);
+  const [numOfRows,setNumOfRows] = useState([1]); 
+  
+  const onClickHandler = () => {
+    if(isTable) {
+      setNumOfRows([...numOfRows,numOfRows.length + 1])
+    } else {
+      SetIsTable(true);
+    }
+  }
+  return (
+    <div className="App">
+     <button onClick={onClickHandler}> Add Row </button>
+     {
+    isTable && <table border="1">
+       <thead>
+         <h1>Table Data</h1>
+       </thead>
+       <tbody>
+         {
+            numOfRows.map((row => {
+              return <tr key={row} >
+                <td>Row : {row}</td>
+                </tr>
+            }))
+         }
+       </tbody>
+     </table>
+     }
+    </div>
+  );
+}

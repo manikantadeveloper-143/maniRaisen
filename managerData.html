@@ -1,0 +1,131 @@
+const arr = [1,2,2,3,4,5,5,6,6];
+// const output = [1,2,3,4,5,6];
+
+function isPresent(arr,elem) {
+  for(let i = 0 ; i < arr.length; i++) {
+    if(arr[i] === elem) return true;
+  }
+  return false;
+}
+
+function getUnique(arr) {
+  const uarr = [];
+  for(let i = 0 ; i < arr.length ; i++) {
+    if(! isPresent(uarr,arr[i])) {
+      uarr[uarr.length] = arr[i];
+    }
+  }
+  return uarr;
+} 
+console.log(getUnique(arr));
+console.log(getUnique([6,6,5,5,4,3,2,2,1]));
+
+
+
+
+
+
+
+
+
+
+const array = [1,5,7,6,5,3];
+   // const output = 6
+   
+   function findSecondMax(arr) {
+     let fMax = -Infinity;
+     let sMax = -Infinity;
+     for(let i = 0 ; i < arr.length ; i++) {
+       if(arr[i] > fMax) {
+         sMax = fMax;
+         fMax = arr[i];
+       } else {
+         if(arr[i] > sMax) sMax = arr[i];
+       }
+
+     }
+     return sMax;
+   }
+   console.log(findSecondMax(array));
+   console.log(findSecondMax([6,5,4,3,2,1]));
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   Rotate the given array at a given index without an in-built function.
+ 	const arr = [1,2,3,4,5,6]
+ 	const index = 3
+ 	const output = [4,5,6,1,2,3]
+
+
+   function rotateArrayAt(arr, index) {
+    const rotatedArray = [];
+    for (let i = index; i < arr.length; i++) {
+      rotatedArray.push(arr[i]);
+    }
+    for (let i = 0; i < index; i++) {
+      rotatedArray.push(arr[i]);
+    }
+    return rotatedArray;
+  }
+  
+  const arr = [1, 2, 3, 4, 5, 6];
+  const index = 3;
+  console.log(rotateArrayAt(arr, index)); // Output: [4, 5, 6, 1, 2, 3]
+  
+
+
+
+  /////////////////////////////////////////////////////
+ Remove duplicates from array without an in-built function.
+ 	const arr = [1,2,2,3,4,5,5,6,6]
+ 	const output = [1,2,3,4,5,6]
+  
+  
+ Return the 2nd largest element in the array without an in-built function.
+ 	const arr = [1,5,7,6,5,3]
+ 	const output = 6
+  
+
+//solution
+
+const arr = [1,2,2,3,4,5,5,6,6];
+// const output = [1,2,3,4,5,6];
+
+function isPresent(arr,elem) {
+  for(let i = 0 ; i < arr.length; i++) {
+    if(arr[i] === elem) return true;
+  }
+  return false;
+}
+
+function getUnique(arr) {
+  const uarr = [];
+  for(let i = 0 ; i < arr.length ; i++) {
+    if(! isPresent(uarr,arr[i])) {
+      uarr[uarr.length] = arr[i];
+    }
+  }
+  return uarr;
+} 
+console.log(getUnique(arr));
+console.log(getUnique([6,6,5,5,4,3,2,2,1]));
+const array = [1,5,7,6,5,3];
+   // const output = 6
+   
+   function findSecondMax(arr) {
+     let fMax = -Infinity;
+     let sMax = -Infinity;
+     for(let i = 0 ; i < arr.length ; i++) {
+       if(arr[i] > fMax) {
+         sMax = fMax;
+         fMax = arr[i];
+       } else {
+         if(arr[i] > sMax) sMax = arr[i];
+       }
+
+     }
+     return sMax;
+   }
+   console.log(findSecondMax(array));
+   console.log(findSecondMax([6,5,4,3,2,1]));

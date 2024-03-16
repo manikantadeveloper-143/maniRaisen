@@ -1,0 +1,95 @@
+//////////////////////////////////////// CHECKING FIBBANACCI NUMBER OR NOT GIVEN NUMBER ///////////////////////////////////////////
+// function isFibanacci(n){
+//    let a=0;
+//    let b=1;
+//    let c;
+//    while(true){
+//      if(a===n) return true;
+//      else if(a > n) return false;
+
+//      c=a+b;
+//      a=b;
+//      b=c;
+//    }
+// }
+// const num=9;
+// if(isFibanacci(num)){
+//   console.log("it is a Fibb")
+// }else {
+//   console.log("it is  not aFibb")
+
+// }
+
+//////////////// //////////////////////// PRINTING UPTO 10 FIBANACCI NUMBERS  USING RECURSSIVE FUNVTION//////////////////////////////////////////////////////////
+<!-- function fibanacci(n){
+if(n <= 1){
+  return n;
+}else {
+  return fibanacci(n-1) + fibanacci(n-2)
+}
+}
+const num=10;
+for(let i=0;i<num;i++){
+  console.log(fibanacci(i))
+} -->
+
+<!-- //////////////////////////////////////////////////////////// FACTORIAL OF NUMBER //////////////////////////////////////////////////
+function factorial(n){
+    let fact=1;
+    for(let i=n;i>=1;i--){
+      fact *=i
+    }
+    return fact;
+    }
+    console.log(factorial(5))
+   -->
+  
+
+   ///////////////////////////////////////////   PRIME NUMBERS UPTO 100/////////////////////////////////////////
+
+<!--    
+function prime(n){
+    if(n <=1){
+      return false
+    }
+    for(let i=2;i<=Math.sqrt(n);i++){
+      if(n % i === 0) return false
+    }
+    return true;
+    }
+    
+    
+    const num=100;
+    for(let i=2;i<num;i++){
+      if(prime(i)){
+        console.log(i)
+      }
+    }
+     -->
+
+     <!-- /////////////////////////////////////// CHECKING PRIME OR NOT /////////////////////////////////////////
+     function isPrime(n) {
+        if (n <= 1) {
+          return false;
+        }
+      
+        for(let i=2;i<=Math.sqrt(n);i++){
+          if(n % i === 0) return false
+        }
+        return true;
+      }
+      const num=5;
+      if(isPrime(num)){
+        console.log("prime")
+      }else {
+        console.log("not a prime")
+      } -->
+
+      ////////////////////////////////////////////////  EVEN OR NOT ////////////////////////////////////////////////////
+
+      <!-- function isEven(n){
+        return n%2 ===0
+     }
+     const num=4;
+     if(isEven(num)) console.log("even")
+     else console.log("odd") -->

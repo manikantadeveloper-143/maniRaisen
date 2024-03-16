@@ -1,0 +1,185 @@
+import "./styles.css";
+import {useState} from 'react';
+export default function App() {
+
+  const [movie,setMovie] = useState({});
+
+  const [movieList,setMovieList] = useState([]);
+
+  const onInputEnter = ({target : {name,value}}) => {
+      setMovie({...movie,[name] : value})
+  }
+  const onAddMovie = () => {
+    setMovieList([movie,...movieList]);
+    setMovie({
+      movieName : "",
+      directorName : ""
+    });
+  }
+  const onDeleteMovie = (index) => {
+    movieList.splice(index,1);
+    setMovieList([...movieList]);
+  }
+  return (
+    <div className="App">
+      <table>
+        <thead>
+          <tr>
+            <td>Movie title</td>
+            <td>Director Name</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <td>
+          <input 
+          name="movieName"
+          value={movie.movieName} 
+          onChange={onInputEnter}
+          type="Text" 
+          placeholder="Enter Movie Name"/>
+        </td>
+            <td>
+            <input 
+            name="directorName" 
+            type="Text" 
+            value={movie.directorName} 
+            onChange={onInputEnter}
+            placeholder="Enter Director Name"/>
+            </td>
+            <td>
+              <button
+              onClick={onAddMovie}
+              >Add</button>
+            </td>
+            </tr>
+            {
+              movieList.map((movie,index) => {
+                return <tr key={index}>
+                  <td>
+          {movie.movieName}
+        </td>
+            <td>
+                {movie.directorName}
+            </td>
+            <td>
+              <button
+              onClick={
+                onDeleteMovie.bind(this,index)
+              }>Delete</button>
+            </td>
+                </tr>
+              })
+            }
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+
+/////////////////////////// with edit button/////////////////////
+
+
+
+import React,{useState} from "react";
+import "./style.css";
+
+export default function App() {
+  const [movie,setMovie]=useState({})
+const [movieList,setMovieList]=useState([])
+const [edit,setEdit]=useState(false)
+const [editObj,setEditObj]=useState('')
+
+
+const changeHandler=({target:{name,value}})=>{
+setMovie({...movie, [name]:value})
+}
+
+const addHandler=()=>{
+if(!edit){
+  setMovieList([...movieList,movie])
+setMovie({
+  movieName:"",
+  DirectorName:""
+})
+}
+else {
+  const editArr=movieList.map((item)=> item.id === editObj.id ?{...movie} :item)
+  setMovieList(editArr)
+  setEdit(false)
+  setMovie({
+    movieName:"",
+    directorName:""
+  })
+}
+}
+
+const deleteHandler=(id)=>{
+  const deleteArray=movieList.filter((item)=>item.id !==id)
+  setMovieList(deleteArray)
+}
+
+const editHandler=(obj)=>{
+setMovie(obj)
+setEdit(true)
+setEditObj(obj)
+}
+
+  return (
+    <div>
+     <table>
+       <thead>
+         <tr>
+           <td>MovieName</td>
+           <td>DirectorName</td>
+           <td></td>
+
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+             <td>
+               <input
+               name="movieName"
+               value={movie.movieName}
+               type="text"
+               placeholder="Enter movieName"
+               onChange={changeHandler}
+               />
+             </td>
+             <td>
+               <input
+               name="directorName"
+               value={movie.directorName}
+               type="text"
+               placeholder="Enter DirectorName"
+               onChange={changeHandler}
+               />
+             </td>
+             <td>
+               <button onClick={addHandler}>Add</button>
+             </td>
+           </tr>
+           {
+             movieList.map((item,index)=>{
+               return <tr key ={index}>
+
+                 <td>{item.movieName}</td>
+                 <td>{item.directorName}</td>
+                 <td>
+
+                   <button onClick={()=>deleteHandler(item.id)}>Delete</button>
+                   <button onClick={()=>editHandler(item)}>Edit</button>
+
+                 </td>
+                 
+               </tr>
+             })
+           }
+       </tbody>
+       </table>
+    </div>
+  );
+}

@@ -1,0 +1,684 @@
+// WHEN I CLICK BTN IT WANTS TO SHOW OBJ DETAILS AND AGIN IF I CLICK MEANS HIDE ///////////////////////////////////
+
+<!-- import React,{useState} from "react";
+import "./style.css";
+
+export default function App() {
+  const [obj,setObj]=useState({
+    name:'Manikanta',
+    lName:'Ayyala',
+    address:{
+      street:'Rayachoty',
+      district:'kadapa'
+    }
+
+  })
+const [showDetails,setShowDetails]=useState(false)
+  const clickHandler=()=>{
+        setShowDetails(!showDetails)
+  }
+  return (
+    <div>
+    <button onClick={clickHandler}>click</button>
+    {
+      showDetails && <div>
+           <h4>{obj.name}</h4>
+           <h4>{obj.lName}</h4>
+           <h4>{obj.address.street}</h4>
+           <h4>{obj.address.district}</h4>
+
+        </div>
+    }
+    </div>
+  );
+} -->
+
+
+// WHEN I CLICK BTN IT WILL SHOW TABLE DATA ///////////////////////////////////////////////////////////////////////////////////
+<!-- import React,{useState} from "react";
+import "./style.css";
+
+export default function App() {
+  const [isTable,setIsTable]=useState(false);
+  const [table,setTable]=useState([])
+
+  const clickHandler=()=>{
+    if(isTable){
+      setTable([...table,table.length+1])
+    }else {
+      setIsTable(true)
+    }
+    /////or////
+    setIsTable(true)
+    setTable([...table,table.length+1])
+  }
+  return (
+    <div>
+     <button onClick={clickHandler}>click</button>
+     {
+       isTable && <table border={2}>
+           <thead>
+             <tr>
+               <td>TableData</td>
+               </tr>
+             </thead>
+             <tbody>
+               {
+                 table.map((row,index)=>{
+                        return <tr key={index}>
+                                  <td>{row}</td>
+                        </tr>
+                 })
+               }
+               </tbody>
+         </table>
+     }
+    </div>
+  );
+} -->
+
+///////////////   NESTED ARRAY OBJECTS TAKING PROPERTIES  ////////////////////
+<!-- import React from "react";
+import "./style.css";
+
+const Sources = [
+  {
+    name: "Microsoft",
+    description: "Software company",
+    secondary: [
+      {
+        name: "phones",
+        description: "windows",
+        tertiary: [
+          {
+            name: "white"
+          },
+          {
+            name: "black"
+          }
+        ]
+      },
+      {
+        name: "laptops",
+        tertiary: [
+          {
+            name: "blue",
+            description: "top-end"
+          },
+          {
+            name: "grey",
+            description: "available after 2021"
+          }
+        ]
+      }
+    ]
+  }
+];
+export default function App() {
+  return (
+    <div>
+   {
+      Sources.map((source,index)=>{
+        return <div key={index}>
+          <h3>{source.name}</h3>
+          {
+             source.secondary.map((item,index)=>{
+                  return <div key={index}>
+                    <dt>{item.name}</dt>
+                    {
+                      item.tertiary.map((color,index)=>{
+                            return <div key={index}>
+                              <dd>{color.name}</dd>
+                              </div>
+                      })
+                    }
+                    </div>
+             })
+          }
+          </div>
+  })
+   }
+    </div>
+  );
+} -->
+
+
+/////FETCH DATA FROM API INSIDE A MEALS OBJECT INSTEAD DIRECT OBJECT///////////////////////////////////////
+<!-- 
+import React,{useState,useEffect} from "react";
+import "./style.css";
+const API_URL = "https://www.themealdb.com/api/json/v1/1/search.php?f=a";
+
+export default function App() {
+
+  const [meal,setMeal]=useState([])
+
+  useEffect(()=>{
+    fetch(API_URL)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      if(data.meals){
+        setMeal(data.meals)
+      }
+    })
+
+    /////ONE ARRAY OBJECT MEANS .then()
+  },[])
+  return (
+    <div>
+     {
+       meal.map((item,index)=>{
+         return <div key={index}>
+              <div className='imgContainer'>
+                <img src={item?.strMealThumb}/>
+                </div>
+                <div>
+                  <h4>{item?.strCategory}</h4>
+                  
+                  
+                  <p>{item.strInstructions.slice(0,120)}</p>
+                  
+                  </div>
+                  {
+                    item?.strTags?.split(",").map(tag=>{
+                      return <ul>
+                        <li>{tag}</li
+                        ></ul>
+                    })
+                  }
+                  <div>
+                    </div>
+           </div>
+       })
+     }
+    </div>
+  );
+} -->
+
+
+////// USING CONTEXT WHEN I CLICK BTN IT SHOULD ENTR DATE V///////////////////////////////////////
+
+<!-- import React,{createContext,useState,useContext} from 'react';
+
+const Context=createContext([])
+
+const Provider=({children})=>{
+
+  const [text,setText]=useState('');
+  return <Context.Provider value={[text,setText]}>
+    {children}
+    </Context.Provider>
+}
+
+
+const UserInfo=()=>{
+  const [text,setText]=useContext(Context)
+
+  
+const clickHandler=()=>{
+setText(presentDate())
+}
+
+
+const presentDate=()=>{
+  return new Date().toLocaleString()
+}
+
+
+  return (
+    <div>
+      <textarea value={text}></textarea>
+    <button onClick={clickHandler}>click Me</button>
+  
+      </div>
+  )
+}
+
+
+
+
+const App=()=>{
+return (
+  <div>
+  <Provider>
+    <UserInfo/>
+    </Provider>
+    </div>
+)
+}
+export default App -->
+
+
+////////////// like debouncing we have to use Usecallback in  input searchbar and type there any thing//////
+
+
+<!-- <body> -->
+
+    <!-- <input type="text" placeholder="Enter text" id='inputField' />
+    
+    
+    <script>
+      // Function to create a debounced version of a callback function
+      function dbFunc(callback) {
+        let time = null;
+        return () => {
+          
+            clearTimeout(time);
+          
+          time = setTimeout(callback, 2000);
+        }
+      }
+    
+    const inputField=document.getElementById('inputField')
+    const debouncedfn=dbFunc(()=>console.log("hello"))
+    inputField.addEventListener('input',debouncedfn)
+    </script>
+    
+    </body> -->
+
+
+
+
+
+<!-- 
+    const str = "MyNameIsJohn";
+// const st=str.replace(/([a-z])([A-Z])/g,'$1 $2')
+// console.log(st)
+
+function getSpace(str){
+let output=" ";
+for(let i=0;i<str.length;i++){
+  if(str[i]===str[i].toUpperCase() && i > 0){
+    output+= "  "+str[i]
+  }else {
+    output+=str[i]
+  }
+}
+return output
+}
+console.log(getSpace(str)) -->
+
+
+
+
+<!--///////////////////////////////////////   PROPS DRILLING     /////////////////////////////////// -->
+
+
+<!-- import React from 'react';
+
+
+const Parent=({data})=>{
+  return (
+    <div>
+      <h4>this is Parent Componenet</h4>
+      <Child data={data}/>
+      </div>
+  )
+}
+
+const Child=({data})=>{
+  return(
+    <div>
+
+      <h4>This is Child component</h4>
+      <p>DATA RECIEBED FROM ANCESTORS :{data}</p>
+      </div>
+  )
+}
+
+
+const App=()=>{
+
+  const data="This is data sending to child components"
+   return (
+     <div>
+        <h3>This is App component</h3>
+        <Parent data={data}/>
+
+       </div>
+   )
+}
+export default App -->
+
+
+/////////////////////////////////////////////////// USEMEMO /////////////////////////////////\
+<!-- import React, { useState, useMemo } from 'react';
+
+const SumComponent = ({ n }) => {
+  // Function to compute the sum of the first n numbers
+  const computeSum = (n) => {
+    console.log('Computing sum...');
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+      sum += i;
+    }
+    return sum;
+  };
+
+  // Memoize the result of computeSum
+  const memoizedSum = useMemo(() => computeSum(n), [n]);
+
+  return (
+    <div>
+      <h2>Sum of first {n} numbers:</h2>
+      <p>{memoizedSum}</p>
+    </div>
+  );
+};
+
+const App = () => {
+  const [count, setCount] = useState(1);
+
+  return (
+    <div>
+      <h1>UseMemo Example</h1>
+      <input
+        type="number"
+        value={count}
+        onChange={(e) => setCount(parseInt(e.target.value))}
+      />
+      <SumComponent n={count} />
+    </div>
+  );
+};
+
+export default App; -->
+
+
+
+
+///////////////////////////////////////// frorms using  useREF/////////////////////////////////
+<!-- import React,{useRef} from "react";
+import "./style.css";
+
+export default function App() {
+
+  const emailRef=useRef(null);
+  const passwordRef=useRef(null)
+
+const submitHandler=(e)=>{
+  e.preventDefault();
+ const email= emailRef.current.value;
+ const password= passwordRef.current.value;
+
+ console.log("form data submitted ", {email,password});
+ emailRef.current.value=""
+ passwordRef.current.value=""
+
+}
+
+  return (
+    <div>
+     <form onSubmit={submitHandler}>
+       <div>
+         <label htmlFor="email">Email : </label>
+         <input type="email" id="email" placeholder="Enter email" ref={emailRef}
+         />
+         </div><br/>
+         <div>
+         <label htmlFor="password">Password : </label>
+         <input type="password" placeholder="Enter password" id="password" ref={passwordRef}
+         />
+         </div>
+         <button>submit</button>
+       </form>
+    </div>
+  );
+
+  
+If you don't call e.preventDefault() in the form submission handler, the browser will perform its default action of submitting the form, which typically results in a page reload or navigation to another page.
+} -->
+
+/////////////////////////  FORWARDREF,USEIMPERATIVEHANDLE////////////////////////
+<!-- 
+import React,{useRef,forwardRef,useImperativeHandle} from "react";
+import "./style.css";
+
+
+const ChildComp=forwardRef((prop,ref)=>{
+
+   const childRef=useRef(null)
+
+useImperativeHandle(ref,()=>({
+  focus:()=>{
+    childRef.current.focus()
+  },
+  getValue:()=>{
+    return childRef.current.value
+  },
+  clearValue:()=>{
+    return childRef.current.value=""
+  }
+}))
+
+  return(
+    <div>
+      <form >
+         <input type="text" ref={childRef}/>
+      </form>
+      </div>
+  )
+})
+
+
+
+
+export default function App() {
+   const inputRef=useRef(null)
+
+
+
+   const clickHandler=()=>{
+     inputRef.current.focus()
+    const refers= inputRef.current.getValue()
+     inputRef.current.clearValue()
+
+     console.log("form data submitted",refers)
+   }
+
+  
+  return (
+    <div>
+    <ChildComp ref={inputRef}/>
+    <button onClick={clickHandler}>Click</button>
+    </div>
+  );
+} -->
+
+
+
+
+
+
+
+
+////////////////////////////////////// WITHOUT USING THIRD VARIABLE SWAP AND WITH USING THIRD VARIABLE SWAP/////////////////////////
+<!-- 
+var x="hello";                        var x="hello";
+var y="world";                         var y="world";
+[x,y] =[y,x];                            let  temp=x;
+console.log("x",x);                       x=y;
+console.log("y",y);                     y=temp;
+                                          console.log(x,y)
+ -->
+
+
+  ////////////////////////// Custom Hooks how to create  //////////////////////////////////////////////////////////////////////////////////
+  =>create a function using word "use".
+  =>Inside a function we can use Inbuild hooks  or custom hooks.
+  =>the fn can accepts parameters to customize to customize its behaviour
+   =>the fn should return any statefull values that u want to xpose to other component using hook 
+  <!-- import React from "react";
+import "./style.css";
+
+
+function useCounter(){
+  const [count,setCount]=React.useState(0)
+
+  const increment=()=>{
+    setCount(count+1)
+  }
+  const Decrement=()=>{
+    setCount(count-1)
+  }
+  return {
+    count,increment,Decrement
+
+  }
+}
+
+
+
+export default function App() {
+  const {count,increment,Decrement}=useCounter()
+  return (
+    <div>
+     <h3>count : {count}</h3>
+     <button onClick={increment}>Increment</button>
+     <button onClick={Decrement}>Decrement</button>
+
+    </div>
+  );
+} -->
+
+
+
+/////////////////////////////////////////////////////////   REDUX STORE ////////////////////////////////////////
+
+
+<!-- import React from "react";
+import "./style.css";
+import {combineReducers} from "redux"
+import {legacy_createStore as createStore} from "redux";
+import {Provider} from "react-redux"
+import {useSelector,useDispatch} from "react-redux"
+const Increment=(number)=>{
+  return{
+    type:"INCREMENT",
+    payload:number
+  }
+}
+const Decrement=(number)=>{
+  return{
+    type:"DECREMENT",
+    payload:number
+  }
+}
+
+const Reducer=(state=0,{type,payload})=>{
+   switch(type){
+     case "INCREMENT":
+     return state+payload;
+     case "DECREMENT" :
+     return state-payload;
+     default  : return state;
+       }
+}
+
+const allReducers=combineReducers({counter:Reducer})
+
+const store= createStore(allReducers)
+
+
+
+
+const MyCompo=()=>{
+    const count=useSelector(state=>state.counter)
+    const dispatch=useDispatch()
+
+    return (
+      <div>
+        <h2>count:{count}</h2>
+        <button onClick={()=>dispatch(Increment(1))}>Increment</button>
+        <button onClick={()=>dispatch(Decrement(1))}>Increment</button>
+
+        </div>
+    )
+}
+
+export default function App() {
+  return (
+    <div>
+    <Provider store={store}>
+      <MyCompo/>
+
+      </Provider>
+    </div>
+  );
+} -->
+
+
+//////////////select and option for diffrent countries'///////////////////////////
+<!-- 
+App.jsx
+
+import React from "react";
+import "./style.css";
+import CountryList from "./CountryList";
+import Search from "./Search";
+import {Countries} from "./Countries"
+export default function App() {
+
+
+const [filterCountries,setFilterCountries]=React.useState(Countries)
+
+const handleSearch=(value)=>{
+  const filter=Countries.filter((country)=>country.toLowerCase().includes(value.toLowerCase()))
+  setFilterCountries(filter)
+}
+
+  return (
+    <div>
+      <section>
+              <Search handleSearch={handleSearch}/>
+              <CountryList Countries={filterCountries}/>
+  </section>
+    </div>
+  );
+}
+
+Search .jsx
+import React from "react";
+import './style.css'
+
+export default function Search({handleSearch}){
+
+  const changeHandler=({target:{value}})=>{
+    handleSearch(value)
+  }
+  return (
+    <div>
+      <input type="text" placeholder="Enter Country" onChange={changeHandler}/>
+      </div>
+  )
+}
+
+CountryList.jsx  
+
+import React from "react";
+// import {Countries} from "./Countries"
+import './style.css'
+
+export default function CountryList({Countries}){
+
+  return (
+    
+     <select>
+       
+    {
+      Countries.map((country,index)=>{
+        return <option key={index}>{country}</option>
+      })
+    }
+
+      
+       </select>
+    
+  )
+} -->
+
+
+
+
+

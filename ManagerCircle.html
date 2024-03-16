@@ -1,0 +1,93 @@
+<!-- import "./styles.css";
+import { useState } from "react";
+export default function App() {
+  const [circles, setCircle] = useState([]);
+  const [click, setClick] = useState(0);
+  const onClickCircle = (value) => {
+    setClick((click) => click + value);
+  };
+  return (
+    <div className="App">
+      <button onClick={() => setCircle([...circles, circles.length])}>
+        Add circle
+      </button>
+      <h2>Number of Cliked Circles : {click}</h2>
+      <div>
+        {circles.map((circle) => {
+          return <Circle key={circle} onCircleClick={onClickCircle} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+const Circle = ({ onCircleClick }) => {
+  const [status, setStatus] = useState(false);
+  return (
+    <div
+      style={{
+        width: "100px",
+        margin: "10px",
+        height: "100px",
+        borderRadius: "100%",
+        border: "1px solid black",
+        backgroundColor: status ? "black" : "white"
+      }}
+      onClick={() => {
+        if (status) {
+          onCircleClick(-1);
+        } else {
+          onCircleClick(1);
+        }
+        setStatus((status) => !status);
+      }}
+    ></div>
+  );
+}; -->
+
+
+ ////////////////////ANOTHER WAY OF IMPLEMENTATION /////////////////
+ import "./style.css";
+import React,{useState} from 'react';
+export default function App() {
+  const [circles,setCircles] = useState(0);
+  const [count,setCount] = useState(0);
+  const renderCircle = (cir) => {
+    const circle = [];
+    for(let i = 0 ; i < cir; i++) {
+      circle.push(<Circle setCount={setCount}/>)
+    }
+    return circle;
+  }
+  return (
+    <div className="App">
+     <div>
+       <button onClick={() => setCircles(prev => prev + 1)}>INC Circle</button>
+      <h3>Number of Circles Clicked  : {count}</h3>
+     </div>
+     <div>
+       {
+         renderCircle(circles)
+       }
+     </div>
+    </div>
+  );
+}
+let circleStyle = {
+  width : "100px",
+  height : "100px",
+  margin : "10px",
+  borderRadius : "50%",
+  border : "2px solid black"
+}
+const Circle = ({setCount}) => {
+  const [click,setClick] = useState(false);
+  return <div onClick={() => {
+    if(click) {
+      setCount(prev => prev - 1);
+    }else {
+      setCount(prev => prev + 1);
+    }
+    setClick(! click);
+  }} style={{...circleStyle,backgroundColor : click ? "blue" : ""}}></div>
+}c

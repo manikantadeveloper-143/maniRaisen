@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // let student={
+        //     name:"mani",
+        //     id:01,
+        //     role:"developer"
+
+        // }
+        // // const {name,id}=student;
+        // // console.log(name); 
+        // let {name,...r}=student;
+        //  console.log(name);
+        //   console.log(r);
+        //   name="hari"
+        //   console.log(name)
+
+        // let fruits=["mango","apple","banana","orange"]
+        // let [a,b,...c]=fruits
+        // console.log(a)
+        // console.log(b)
+        // a="amani";
+        // console.log(a)
+
+
+// let a=10;
+// let b=a;
+// console.log(a)
+// console.log(b)
+// a=100;
+// console.log(a)
+// console.log(b)
+
+// let obj={name:"hari",age:23}
+// let obj2=obj;
+// console.log(obj)
+// console.log(obj2)
+// obj2.id=23;
+// console.log(obj)
+// console.log(obj2)
+
+
+// function outer(){
+//     let a="mani";
+//     function inner(){
+//         console.log(a)
+//     }inner()
+// }
+// outer()
+         
+// let fruits=["mango","banana","orange","grapes"]
+// let fruits2=fruits;
+// console.log(fruits)
+// console.log(fruits2)
+// // fruits[2]="guava";
+// // fruits[1]="mani"
+// fruits.push("hari")
+// console.log(fruits)
+// console.log(fruits2)
+
+
+
+// let employee={
+
+//     name:"mani",
+//     id:123,
+//     desi:"developer",
+//     address:{
+//         state:"Andhrapradesh",
+//         pincode:"516298"
+//     }
+// }
+
+
+// let {name,id,desi,address}=employee;
+// console.log(name)
+// console.log(id)
+// console.log(desi)
+// console.log(address.pincode)
+// let employee2=employee;
+// employee2.name="hari"
+// console.log(employee2.name)
+// console.log(employee.name)
+
+
+
+// let a={
+//     name:"mani",
+//     id:01
+// }
+// // let b=a;
+// // b.gender="male"
+// // console.log(b);
+// // console.log(a)
+// let b=Object.assign({},a)
+// b.gender="male"
+// console.log(b);
+// console.log(a)
+
+
+
+
+// var a=10;
+// console.log(a)
+// function outer(){
+//     let b=20;
+//     function inner(){
+//         console.log(b)
+//         console.log(a)
+
+//     }inner()
+// }outer()
+
+let arr=[1,2,3,4]
+// let arr2=[5,6,7,8]
+// let arr3=[...arr,...arr2]
+// console.log(arr3)
+
+// console.log(arr.forEach((a)=>{
+//  console.log(a)
+// }))
+
+
+// var a=[1,2,3,4,5]
+// a.forEach((arr)=>{
+//   return console.log(arr)
+// })
+
+
+import "./styles.css";
+const numbers = [2,4,6,8,10];import React, { useState } from 'react';
+
+const CreditCardForm = () => {
+  const [creditCardNumber, setCreditCardNumber] = useState('');
+  const [isCreditCardValid, setIsCreditCardValid] = useState(false);
+
+  const handleCreditCardChange = (e) => {
+    const inputCreditCardNumber = e.target.value;
+    // Perform credit card validation logic here
+    // Update isCreditCardValid state based on validation result
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={creditCardNumber}
+        onChange={handleCreditCardChange}
+      />
+      {isCreditCardValid ? (
+        <p>Credit card number is valid</p>
+      ) : (
+        <p>Credit card number is invalid</p>
+      )}
+    </div>
+  );
+};
+
+export default CreditCardForm;
+export default function App() {
+  return (
+    <div className="App">
+      <ol>
+        {
+          numbers.map((num,index) => {
+            return <li key={index}>{num*2}</li>
+          })
+        }
+      </ol>
+    </div>
+  );
+}
+
+
+import "./styles.css";
+const number = [2,4,6,8,10];
+export default function App() {
+  return (
+    <div className="App">
+      <ol>
+        {
+          numbers.map((num,index) => {
+            return num*2 < 16 ? <li key={index}>{num*2}</li> : null
+          })
+        }
+      </ol>
+    </div>
+  );
+}
+        </script>
+</body>
+</html>

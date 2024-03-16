@@ -1,0 +1,92 @@
+const sum = sum1(1)(2)(3)(4)(5)(6)();
+// returns => 21
+
+function sum1(a) {
+  let total = a;
+  function sum(b) {
+    if(b) {
+      total += b;
+      return sum;
+    } else return total
+  } 
+  return sum;
+}
+console.log(sum);
+
+
+
+const sum = sum1(1)(2)(3)(4)(5)(6)();
+// returns => 21
+function sum1(a){
+  return  function sum2(b){
+        if(b) return sum1(a+b)
+        return a;
+    }
+}
+console.log(sum)
+///////////////////////////
+
+
+
+import "./styles.css";
+
+const Sources = [
+  {
+    name: "Microsoft",
+    description: "Software company",
+    secondary: [
+      {
+        name: "phones",
+        description: "windows",
+        tertiary: [
+          {
+            name: "white"
+          },
+          {
+            name: "black"
+          }
+        ]
+      },
+      {
+        name: "laptops",
+        tertiary: [
+          {
+            name: "blue",
+            description: "top-end"
+          },
+          {
+            name: "grey",
+            description: "available after 2021"
+          }
+        ]
+      }
+    ]
+  }
+];
+
+export default function App() {
+  
+  return (
+    <div className="App">
+      { Sources.map((sources) => {
+      return <>
+      <p>{sources.name}</p>
+      <dl>
+      {
+        Sources[0]?.secondary.map((item,index) => {
+          return <div key={index}>
+            <dt>{item.name}</dt>
+            {
+              item?.tertiary?.map( color => {
+                return <dd>{color.name}</dd>
+              })
+            }
+          </div>
+        })
+      }
+      </dl>
+      </>
+      })}
+    </div>
+  );
+}

@@ -1,0 +1,179 @@
+<!-- //////////with out onchange we have to do/////////
+
+import "./styles.css";
+import {useState,useRef} from 'react'
+export default function App() {
+  const [value,setValue] = useState("");
+  const inputTag = useRef(null);
+  return (
+    <div className="App">
+      <h2>Your Entered : {value}</h2>
+      <input ref={inputTag} type="text"/>
+      <button onClick={() => {
+        setValue(inputTag.current.value);
+      }}>Cick to store</button>
+    </div>
+  );
+}
+
+//////////
+
+import "./styles.css";
+
+var string = "Welcome to this Javascript Guide!"; 
+// reverse each word in the sentence
+let array = [
+  { name: 'John', age: 35 },
+  { name: 'Mike', age: 20 },
+  { name: 'Jack', age: 45 },
+  { name: 'Smith', age: 32 },
+];//Find Name of the Oldest Person
+
+document.getElementById("app").innerHTML = array.reduce( (oldest,person) => {
+  if(person.age > oldest.age) return person;
+  return oldest;
+},{age : 0}).name;
+// document.getElementById("app").innerHTML = string + " => " + string.split(" ").map(word => word.split("").reverse().join("")).join(" ");
+
+
+//////////////////   DUPLICATE OBJECTS  //////////////////////
+
+let arr1 = [{id: 1, title: 'title 1'}, {id: 2, title: 'title 2'}];
+
+let arr2 = [{id: 1, roll: 101}, {id: 2, roll: 102}, {id: 3, roll: 103}];
+
+function isPresent(arr,id) {
+  for(let i = 0 ; i < arr.length ; i++) {
+    if(arr[i].id === id) return true;
+  }
+  return false;
+}
+  function margeArr(a1,a2) {
+    let output = [];
+    for(let i = 0 ; i <a1.length ; i++) {
+      if(! isPresent(output,a1[i].id)) output[output.length] = a1[i];
+    }
+    for(let i = 0 ; i <a2.length ; i++) {
+      if(! isPresent(output,a2[i].id)) output[output.length] = a2[i];
+    }
+    return output;
+  }
+
+  console.log(margeArr(arr1,arr2)); -->
+
+
+
+  import React, { useState, useEffect } from "react";
+import {
+  Editor,
+  EditorState,
+  RichUtils,
+  convertToRaw,
+  convertFromRaw,
+  Modifier,
+} from "draft-js";
+import "draft-js/dist/Draft.css";
+
+const EditorComponent = () => {
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+
+  useEffect(() => {
+    const savedContent = localStorage.getItem("editorContent");
+    if (savedContent) {
+      const contentState = convertFromRaw(JSON.parse(savedContent));
+      setEditorState(EditorState.createWithContent(contentState));
+    }
+  }, []);
+
+  const handleEditorChange = (newEditorState) => {
+    setEditorState(newEditorState);
+  };
+
+  const handleKeyCommand = (command) => {
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if (newState) {
+      handleEditorChange(newState);
+      return "handled";
+    }
+    return "not-handled";
+  };
+
+  const handleBeforeInput = (chars) => {
+    if (chars === "#" || chars === "*" || chars === "**" || chars === "***") {
+      const currentContentState = editorState.getCurrentContent();
+      const selectionState = editorState.getSelection();
+      const blockKey = selectionState.getStartKey();
+      const block = currentContentState.getBlockForKey(blockKey);
+      const blockText = block.getText();
+      const start = selectionState.getStartOffset();
+      const end = selectionState.getEndOffset();
+      const selectedText = blockText.slice(start, end);
+      let newEditorState = editorState;
+
+      switch (chars) {
+        case "#":
+          newEditorState = RichUtils.toggleBlockType(editorState, "header-one");
+          break;
+        case "*":
+          newEditorState = RichUtils.toggleInlineStyle(editorState, "bold");
+          break;
+        case "**":
+          newEditorState = RichUtils.toggleInlineStyle(editorState, "RED");
+          break;
+        case "***":
+          newEditorState = RichUtils.toggleInlineStyle(
+            editorState,
+            "UNDERLINE"
+          );
+          break;
+        default:
+          break;
+      }
+
+      if (selectedText.trim() === "" && chars !== "#") {
+        // Remove the typed character if no text is selected
+        const contentState = Modifier.removeRange(
+          currentContentState,
+          selectionState.merge({
+            anchorOffset: start - 1,
+            focusOffset: end,
+          }),
+          "backward"
+        );
+
+        newEditorState = EditorState.push(
+          newEditorState,
+          contentState,
+          "remove-range"
+        );
+      }
+
+      handleEditorChange(newEditorState);
+      return "handled";
+    }
+
+    return "not-handled";
+  };
+
+  const handleSave = () => {
+    const contentState = editorState.getCurrentContent();
+    const rawContentState = convertToRaw(contentState);
+    localStorage.setItem("editorContent", JSON.stringify(rawContentState));
+  };
+
+  return (
+    <div className="editor-container">
+      <Editor
+        editorState={editorState}
+        onChange={handleEditorChange}
+        handleKeyCommand={handleKeyCommand}
+        handleBeforeInput={handleBeforeInput}
+      />
+      <button onClick={handleSave}>Save</button>
+    </div>
+  );
+};
+
+export default EditorComponent;

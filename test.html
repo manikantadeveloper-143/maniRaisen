@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// Armstrong
+                //    let num=+ prompt("enter a number")
+                //    let sum=0;
+                //    let temp=num;
+                //    while(num>0){
+                //     let rem=num%10;
+                //     sum +=Math.pow(rem,String(temp).length)
+                //     num = Math.trunc(num/10)
+                //    }
+                //    if(sum==temp)
+                //    {
+                //     console.log("yes")
+                //    }
+                //    else{
+                //     console.log("no")
+                //    }
+ 
+///SPY
+                //    let num=+ prompt("enter a number")
+                //    let sum=0;
+                //    let multiply=1;
+                //    while(num>0){
+                //     let rem=num%10;
+                //     sum+=rem;
+                //     multiply*=rem;
+                //     num=Math.trunc(num/10)
+
+                //    }
+                //    if(sum==multiply)
+                //    {
+                //     console.log("yes")
+                //    }
+                //    else{
+                //     console.log("no")
+                //    }
+
+///STRONG
+
+                //    let num=+ prompt("enter a number")
+                //    let finalNumber=0;
+                //    let temp=num;
+                //    while(num>0){
+                //     let rem=num%10;
+                //     finalNumber +=findFact(rem)
+                //     num =Math.trunc(num/10)
+
+                //    }
+                //    function findFact(num){
+                //     var fact=1;
+                //     for(let num;num>1;num--){
+                //         fact *=num;
+                //     }
+                //     return fact
+                //    }
+                //    if(temp=finalNumber)
+                //     {
+                //     console.log("yes")
+                //    }
+                //    else{
+                //     console.log("no")
+                //    }
+                   
+
+
+                let num=+ prompt("enter a number")
+                let flag=true;
+                for(let i=2;i<num;i++)
+                {
+                    if(num%i===0){
+                        flag=false;
+                        break
+                    }
+                   
+                }
+                if(flag && num>1){
+                        console.log("prime")
+                    }
+                    else{
+                        console.log("not a prime")
+                    }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+//Css toy that you have to show ////
+<div class="main">
+  <div class="circle"></div>
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+<style>
+  * {
+    padding : 0;
+    margin : 0;
+  }
+  body {
+    background-color : #191919;
+  }
+  .main {
+    width: 40vw;
+    height: 70vh;
+      margin:50px auto;
+      border-radius: 50% 50% 20px 20px;
+    background: #F2AD43;
+      display : flex;
+      align-items :center;
+      justify-content : center;
+      overflow : hidden ;
+      position:relative;
+  }
+      .circle {
+        background-color :#FFF58F ;
+        width : 50px;
+        height : 50px;
+        border-radius: 100%;
+      }
+        .left {
+          background-color : #E08027;
+          width : 150px;
+          height : 150px;
+          position : absolute;
+          transform : translate(-60px,60px)
+        }
+      .main>div {
+        border-radius : 50%;
+      }
+        .right {
+          background-color : #824B20;
+          width : 150px;
+          height : 150px;
+          position : absolute;
+          transform : translate(60px,60px)
+        }
+</style>
+
+<!-- OBJECTIVE -->
+<!-- Write HTML/CSS in this editor and replicate the given target image in the least code possible. What you write here, renders as it is -->
+
+<!-- SCORING -->
+<!-- The score is calculated based on the number of characters you use (this comment included :P) and how close you replicate the image. Read the FAQS (https://cssbattle.dev/faqs) for more info. -->
+
+<!-- IMPORTANT: remove the comments before submitting -->
+
+
+
+
+
+////////////// like debouncing we have to use Usecallback in  input searchbar and type there any thing//////
+
+/* import "./styles.css";
+import { useCallback, useEffect, useState } from 'react';
+
+import React,{useState,useCallback} from "react";
+import "./style.css";
+
+export default function App() {
+  const [text,setText]=useState('')
+
+
+const dbFunc=(cbf)=>{
+  let timer=null;
+  return ()=>{
+    if(timer!==null){
+    clearTimeout(timer)
+        
+    }
+    timer=setTimeout(cbf,2000)
+  }
+}
+
+  const changeHandler=({target:{value}})=>{
+console.log(value);
+setText(value)
+func()
+  }
+
+  const func=useCallback(dbFunc(()=>console.log("hello")),[])
+  return (
+    <div>
+     <input type="text" placeholder="Enter Text" value={text} onChange={changeHandler}/>
+    </div>
+  );
+}
+
+  */
+
+
+
+
+
+
+
+
+

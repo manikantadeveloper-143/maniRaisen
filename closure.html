@@ -24,21 +24,29 @@
     //    let result =outer()
     //  console.log(  result())
 
-    console.log("Execution starts")
+    // console.log("Execution starts")
        
-       var a=10;
-       console.log(a);
-       function outer(){
-           let b=20;
-           function inner (){
-               console.log(b);
-               console.log(a)
+    //    var a=10;
+    //    console.log(a);
+    //    function outer(){
+    //        let b=20;
+    //        function inner (){
+    //            console.log(b);
+    //            console.log(a)
                
-           }
-        inner()
-       }
-     console.log( outer())
-     
+    //        }
+    //     inner()
+    //    }
+    //  console.log( outer())
+
+    let arr=[1,1,2,2,3,4,4,5,];
+    let duplicateArray=[];
+    for(let i=0;i<arr.length;i++){
+        if(duplicateArray.indexOf(arr[i])===-1){
+            duplicateArray.push(arr[i])
+        }
+    }
+     console.log(duplicateArray)
     
     </script>
 </body>

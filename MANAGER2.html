@@ -1,0 +1,58 @@
+import "./styles.css";
+import {useState} from 'react';
+let url = "https://www.w3schools.com/css/img_forest.jpg";
+export default function App() {
+
+  const [isDisplay,setDisplay] = useState(false);
+  const [allImage,setImages] = useState([]);
+  return (
+    <div className="App">
+      
+     <button onClick={()=> {
+       setDisplay(pres => true)
+       setImages([...allImage,url]);
+       }}>Add</button>
+     
+      {
+      isDisplay && 
+      <div className="container">
+        {
+          allImage.map((url,index) => {
+            return <div>
+            <img src={url}/>
+              <h6>Nature image {index + 1}</h6></div>
+          })
+          }
+      </div>
+      }
+     
+    </div>
+  );
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  
+  }
+  h6 {
+    width: 200px;
+  }
+  img {
+    width: 200px;
+    animation-name:move;
+    animation-timing-function: linear;
+  }
+  @keyframes move{
+    0% {
+       transform : translatey(200px) ;
+    }
+    100% {
+      transform : translatey(200px);
+    }
+  }

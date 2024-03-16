@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var a;
+        // console.log(typeof 10);
+        // console.log(typeof '');
+        // console.log(typeof true);
+        // console.log(typeof a);
+
+
+        ///// Rest ////
+        // const numbers = [1, 2, 3, 4, 5, 6];
+
+        // const [one, two, ...rest] = numbers;
+        // console.log(one)
+        // console.log(two)
+
+        // console.log(rest)
+
+
+
+        ///// spread /////
+
+        // const array1 = [1, 2, 3];
+        // const array2 = [4, 5, 6];
+        // const array3 = [...array1, ...array2];
+        // console.log(array3)
+
+
+    
+
+
+let str = "hello world";
+function getUni(str) {
+    
+  let uni= {};
+  for(let i = 0 ; i < str.length ; i++) {
+    if(uni[str[i]]) uni[str[i]] = uni[str[i]] + 1;
+    else uni[str[i]] = 1;
+  }
+  let out = "";
+  for(const key in uni) {
+    if(uni[key] > 1) out += key;
+  }
+  return out;
+}
+console.log(getUni(str))
+
+// const input1 = [1,2,2,3,4,5,5,6,6];
+// // const output1 = [1,2,3,4,5,6];
+// function findUnique(arr) {
+//   let output = [];
+//   let temp = {};
+//   for(let i = 0 ; i < arr.length; i++) {
+//     temp[arr[i]] = true;
+//   }
+//   for(const key in temp) output[output.length] = key;
+//   return output;
+// }
+// console.log(findUnique(input1));
+
+function makeReverse(str) {
+  let output = "";
+  for(let i = 0 ; i < str.length; i++) {
+    output = str[i] + output;
+  }
+  return output;
+}
+console.log(makeReverse(str));
+
+
+
+
+// let a = 0;
+// let b = false;
+// console.log((a == b)); // true  // type coersion possible
+// console.log((a === b)); // false  // not possible
+// console.log(null === undefined) //false
+
+
+
+// const obj1 = { x : 1, y : 2 };
+// const obj2 = { z : 3 };
+
+// // add members obj1 and obj2  to obj3
+// const obj3 = {...obj1, ...obj2};
+
+// console.log(obj3); // {x: 1, y: 2, z: 3}
+
+
+
+// const obj1={x:1,y:2};
+// const obj2={z:3};
+// const obj3={...obj1,...obj2};
+// console.log(obj3)
+
+// function robo(a,b,...rest){
+//   console.log(a)
+//   console.log(b)
+//   console.log(rest)
+// }
+// robo(1,2,3,4,5,)
+    </script>
+</body>
+
+</html>
